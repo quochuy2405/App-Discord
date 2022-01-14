@@ -1,12 +1,14 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Styles/Login.scss'
 
 function Login() {
 	const { t, i18n } = useTranslation()
+	const navigate = useNavigate()
 	const OnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
+		navigate({ pathname: '/home' }, { replace: true })
 	}
 	return (
 		<div className="background">
@@ -19,11 +21,11 @@ function Login() {
 					<form onSubmit={OnSubmit}>
 						<div className="login-input">
 							<p className="text-input">Username</p>
-							<input type="text" />
+							<input type="text" required />
 						</div>
 						<div className="login-input">
 							<p className="text-input">Password</p>
-							<input type="password" />
+							<input type="password" required />
 						</div>
 						<button className="btn-login sound" type="submit">
 							<p>Login</p>
