@@ -12,7 +12,7 @@ function App() {
 		audio.play()
 	}
 	useEffect(() => {
-		window.addEventListener('mousedown', function () {
+		window.addEventListener('mousemove', function () {
 			document.querySelectorAll('.sound').forEach((item) => {
 				item.addEventListener('click', () => {
 					startSound()
