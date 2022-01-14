@@ -35,7 +35,7 @@ function Signup() {
 					</form>
 				</div>
 				<div className="signup-bottom">
-					<Link to={'/login'}>
+					<Link to={'/'}>
 						<div className="btn-signup sound">
 							<i className="fab fa-google"></i> Login with Google
 						</div>
