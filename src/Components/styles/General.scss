@@ -1,0 +1,17 @@
+.general {
+	width: 100%;
+	height: 100%;
+	& .nav-general {
+		width: 18%;
+		height: 100%;
+		background-color: rgb(91, 107, 121);
+		border-radius: 10px 0 0 0;
+		& .general-channel-name {
+			& p {
+				font-size: 1.2rem;
+				color: white;
+				font-weight: 500;
+			}
+		}
+	}
+}

@@ -1,0 +1,108 @@
+@import './Avariable.scss';
+.background {
+	width: 100%;
+	height: 100vh;
+	@include background-login;
+	& .login {
+		position: absolute;
+		width: 30%;
+		height: 90vh;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		background-color: white;
+		border-radius: 10px;
+		border: 4px solid black;
+		box-shadow: 0px 0px 20px rgb(221, 221, 221);
+		padding: 40px 10px;
+
+		& .head-login {
+			margin-top: 20px;
+			text-align: center;
+			& .title {
+				font-size: 1.8rem;
+				font-weight: 600;
+			}
+			& .description {
+				font-size: 0.8rem;
+			}
+		}
+		& .login-form {
+			position: relative;
+			margin: 40px 0;
+			& .register-forgot {
+				display: flex;
+				justify-content: space-between;
+				padding: 0 40px;
+
+				& p {
+					font-size: 0.8rem;
+					font-weight: 550;
+					color: rgb(2, 2, 2);
+					opacity: 0.8;
+					&:hover {
+						opacity: 1;
+						font-weight: 600;
+						transition: all linear 0.2s;
+						cursor: pointer;
+					}
+				}
+			}
+			& .btn-login {
+				@include button-custome(80%, 50px, var(--color-orange), rgb(26, 26, 26), 1.2rem, 10px);
+			}
+			& .login-input {
+				width: 80%;
+				height: 70px;
+				border: 2px solid rgb(44, 44, 44);
+				border-radius: 15px;
+				margin: 20px auto;
+				padding: 10px;
+				transition: all ease 0.2s;
+				&:focus-within {
+					box-shadow: 0 0 4px rgb(78, 78, 78);
+					transition: all ease 0.1s;
+				}
+
+				& .text-input {
+					font-size: 0.8rem;
+					font-weight: 700;
+					color: rgb(116, 116, 116);
+				}
+
+				& input {
+					display: block;
+					margin: 0 auto;
+					padding: 0 5px;
+					width: 100%;
+					height: 37px;
+
+					border: none;
+					outline: none;
+					font-size: 1rem;
+					font-weight: 600;
+				}
+			}
+		}
+		& .login-bottom {
+			position: absolute;
+			width: 100%;
+			height: 23%;
+			border-radius: 60px 0 4px 4px;
+			bottom: 0;
+			left: 0;
+			background-color: rgb(107, 208, 255);
+			& .btn-signup {
+				@include button-custome(200px, 50px, var(--color-red), rgb(32, 32, 32), 1rem, 25px);
+			}
+			& .text-rule {
+				text-align: center;
+				width: 80%;
+				margin: 0 auto;
+				font-weight: 520;
+				color: rgb(59, 59, 59);
+			}
+		}
+	}
+}
