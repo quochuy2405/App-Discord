@@ -12,18 +12,34 @@ function General(props: General) {
 				<div className="general-channel-name">
 					<p>Động lười</p>
 				</div>
-				<p>
-					<a data-toggle="collapse" href="#listGeneral" aria-expanded="false">
-						Kênh chung
-					</a>
-				</p>
+				<div className="body-switch">
+					<p className="title-channel">
+						<a data-toggle="collapse" href="#listGeneral" aria-expanded="false">
+							Kênh chung <i className="fad fa-chevron-right"></i>
+						</a>
+					</p>
 
-				<ul className="collapse" id="listGeneral">
-					<li>ok</li>
-					<li>ok</li>
-					<li>ok</li>
-					<li>ok</li>
-				</ul>
+					<ul className="collapse listGeneraltag" id="listGeneral">
+						<li>#Kênh học tập</li>
+						<li>#Kênh giải trí</li>
+						<li>#Kênh tào lao</li>
+						<li>#Kênh đánh bạc</li>
+					</ul>
+				</div>
+				<div className="body-switch">
+					<p className="title-channel">
+						<a data-toggle="collapse" href="#listGeneral1" aria-expanded="false">
+							Kênh chung <i className="fad fa-chevron-right"></i>
+						</a>
+					</p>
+
+					<ul className="collapse listGeneraltag" id="listGeneral1">
+						<li>#Kênh học tập</li>
+						<li>#Kênh giải trí</li>
+						<li>#Kênh tào lao</li>
+						<li>#Kênh đánh bạc</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	)

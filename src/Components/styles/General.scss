@@ -7,10 +7,48 @@
 		background-color: rgb(91, 107, 121);
 		border-radius: 10px 0 0 0;
 		& .general-channel-name {
+			padding: 10px;
+			border-bottom: 1px solid rgba(36, 36, 36, 0.233);
 			& p {
 				font-size: 1.2rem;
 				color: white;
 				font-weight: 500;
+			}
+		}
+		& .body-switch {
+			padding: 5px 15px;
+			& .listGeneraltag {
+				padding: 1px;
+				& li {
+					padding: 10px 20px;
+					margin-bottom: 5px;
+					list-style: none;
+					background: linear-gradient(to left, rgb(60, 83, 105) 48%, rgb(255, 255, 255) 0%) right;
+					background-size: 200%;
+					transition: all 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+					border-radius: 5px;
+					color: white;
+					font-weight: 550;
+					&:hover {
+						background-position: left;
+						color: black;
+					}
+				}
+			}
+			& .title-channel {
+				margin: 10px 0;
+				& a {
+					color: white;
+
+					& .fa-chevron-right {
+						transition: all ease 0.3s;
+						padding: 0 4px;
+					}
+					&[aria-expanded='true'] > .fa-chevron-right {
+						transform: rotate(90deg);
+						transition: transform ease 0.2s;
+					}
+				}
 			}
 		}
 	}
