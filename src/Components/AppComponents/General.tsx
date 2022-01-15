@@ -13,31 +13,31 @@ function General(props: General) {
 					<p>Động lười</p>
 				</div>
 				<div className="body-switch">
-					<p className="title-channel">
+					<p className="title-channel sound">
 						<a data-toggle="collapse" href="#listGeneral" aria-expanded="false">
 							Kênh chung <i className="fad fa-chevron-right"></i>
 						</a>
 					</p>
 
 					<ul className="collapse listGeneraltag" id="listGeneral">
-						<li>#Kênh học tập</li>
-						<li>#Kênh giải trí</li>
-						<li>#Kênh tào lao</li>
-						<li>#Kênh đánh bạc</li>
+						<li className="sound">#Kênh học tập</li>
+						<li className="sound">#Kênh giải trí</li>
+						<li className="sound">#Kênh tào lao</li>
+						<li className="sound">#Kênh đánh bạc</li>
 					</ul>
 				</div>
 				<div className="body-switch">
-					<p className="title-channel">
+					<p className="title-channel sound">
 						<a data-toggle="collapse" href="#listGeneral1" aria-expanded="false">
 							Kênh chung <i className="fad fa-chevron-right"></i>
 						</a>
 					</p>
 
 					<ul className="collapse listGeneraltag" id="listGeneral1">
-						<li>#Kênh học tập</li>
-						<li>#Kênh giải trí</li>
-						<li>#Kênh tào lao</li>
-						<li>#Kênh đánh bạc</li>
+						<li className="sound">#Kênh học tập</li>
+						<li className="sound">#Kênh giải trí</li>
+						<li className="sound">#Kênh tào lao</li>
+						<li className="sound">#Kênh đánh bạc</li>
 					</ul>
 				</div>
 			</div>
