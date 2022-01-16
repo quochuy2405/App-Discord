@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import '../Styles/Signup.scss'
+import './Styles/Signup.scss'
 import { Link } from 'react-router-dom'
 function Signup() {
 	const { t, i18n } = useTranslation()

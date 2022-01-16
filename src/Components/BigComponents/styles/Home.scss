@@ -1,0 +1,98 @@
+@import '../../../Avariable.scss';
+.home {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	& .nav-home {
+		min-width: 260px;
+		height: 100%;
+		background-color: rgb(91, 107, 121);
+		border-radius: 10px 0 0 0;
+		& .tag-channel {
+			cursor: pointer;
+		}
+		& .home-search {
+			padding: 10px;
+			border-bottom: 1px solid rgba(36, 36, 36, 0.233);
+			& p {
+				padding: 5px 0;
+				font-size: 0.8rem;
+				color: white;
+				font-weight: 500;
+				background-color: rgba(20, 20, 20, 0.459);
+				text-align: center;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+		}
+		& .body-switch {
+			padding: 5px 15px;
+			& .listhometag {
+				padding: 1px;
+				& li {
+					padding: 10px 20px;
+					margin-bottom: 5px;
+					list-style: none;
+					background: linear-gradient(to left, rgb(60, 83, 105) 48%, rgb(255, 255, 255) 0%) right;
+					background-size: 200%;
+					transition: all 0.55s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+					border-radius: 5px;
+					color: white;
+					font-weight: 550;
+					&:hover {
+						background-position: left;
+						color: black;
+					}
+				}
+			}
+			& .title-channel {
+				margin: 10px 0;
+				& a {
+					color: white;
+
+					& .fa-chevron-right {
+						transition: all ease 0.3s;
+						padding: 0 4px;
+					}
+					&[aria-expanded='true'] > .fa-chevron-right {
+						transform: rotate(90deg);
+						transition: transform ease 0.2s;
+					}
+				}
+			}
+		}
+	}
+	& .body-home {
+		& .nav-body-home {
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			top: 0;
+			background-color: rgb(91, 107, 121);
+			border-bottom: 1px solid rgba(36, 36, 36, 0.233);
+			& .nav-home--tag {
+				height: 100%;
+				gap: 5px;
+				margin: 0;
+				display: flex;
+				list-style: none;
+				align-items: center;
+
+				& .home-tag {
+					width: fit-content;
+					padding: 5px 10px;
+					color: white;
+					background-color: rgba(20, 20, 20, 0.459);
+					border-radius: 5px;
+					font-weight: 600;
+					cursor: pointer;
+					&.active {
+						color: rgb(27, 27, 27);
+
+						background-color: #e4e4e4;
+					}
+				}
+			}
+		}
+	}
+}

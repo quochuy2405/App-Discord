@@ -1,10 +1,10 @@
 import React from 'react'
-import '../styles/channel.scss'
-interface ChannelProps{
-    isActive?:string
+import './styles/channel.scss'
+interface ChannelProps {
+	isActive?: string
 }
 function Channel(props: ChannelProps) {
-    const { isActive } = props;
+	const { isActive } = props
 	return (
 		<div className="channel">
 			<img

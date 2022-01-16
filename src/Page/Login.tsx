@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
-import '../Styles/Login.scss'
+import './Styles/Login.scss'
 
 function Login() {
 	const { t, i18n } = useTranslation()

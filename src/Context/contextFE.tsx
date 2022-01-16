@@ -8,7 +8,7 @@ audio.volume = 0.02
 const startSound = () => {
 	audio.play()
 }
-const ctx = createContext<ContextInterface>({
+export const ctx = createContext<ContextInterface>({
 	startSound: startSound,
 })
 export const useGlobalContext = () => useContext(ctx)

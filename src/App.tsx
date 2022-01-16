@@ -1,21 +1,18 @@
-import { Suspense, useEffect } from 'react'
+import { Suspense, useContext, useEffect } from 'react'
 import './App.css'
 import Login from './Page/Login'
 import { Route, Routes } from 'react-router'
 import Signup from './Page/SignUp'
 import Landing from './Page/Landing'
-import sound from './Sound/soundclick.mp3'
+import { ctx } from './Context/contextFE'
+
 function App() {
-	let audio = new Audio(sound)
-	audio.volume = 0.01
-	const startSound = () => {
-		audio.play()
-	}
+	const appContext = useContext(ctx)
 	useEffect(() => {
 		window.addEventListener('mouseup', function () {
 			document.querySelectorAll('.sound').forEach((item) => {
 				item.addEventListener('click', () => {
-					startSound()
+					appContext.startSound()
 				})
 			})
 		})

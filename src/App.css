@@ -1,6 +1,25 @@
 a {
 	text-decoration: none;
 }
-p{
+p {
 	margin: 0;
+}
+*::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+	background: #585858a4;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+	background: rgb(58, 58, 58);
+	border-radius: 30px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }
