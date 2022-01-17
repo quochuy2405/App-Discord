@@ -1,7 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
-import firebase, { auth } from '../firebase/firebase'
+import firebase, { auth, db } from '../firebase/firebase'
+import { addDocument } from '../firebase/service'
 import './Styles/Login.scss'
 function Login() {
 	const { t, i18n } = useTranslation()
@@ -9,8 +10,17 @@ function Login() {
 	const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
-		const data = await auth.signInWithPopup(ggProvider)
-		console.log(data)
+		const { additionalUserInfo, user } = await auth.signInWithPopup(ggProvider)
+		if (additionalUserInfo?.isNewUser) {
+			const data = {
+				displayName: user?.displayName,
+				photoURL: user?.photoURL,
+				email: user?.email,
+				uid: user?.uid,
+				providerId: user?.providerId,
+			}
+			addDocument('users', data)
+		}
 	}
 
 	return (

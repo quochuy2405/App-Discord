@@ -3,22 +3,20 @@ import { AuthContext } from '../Auth/AuthProvider'
 import Channel from '../Components/BigComponents/Channel'
 import General from '../Components/BigComponents/General'
 import Home from '../Components/BigComponents/Home'
-import { auth } from '../firebase/firebase'
+import { auth, db } from '../firebase/firebase'
 import './Styles/Landing.scss'
 function Landing() {
 	const [type, setType] = useState('0')
 	const [appBody, setAppBody] = useState(<></>)
 	const { ...user } = useContext(AuthContext)
 	useEffect(() => {
-		const tagChannel = document.querySelectorAll('.channel-switch')
-		if (tagChannel) {
-			tagChannel?.forEach((item) => {
-				item.addEventListener('click', () => {
-					const dataType = item.getAttribute('data-type')
-					if (dataType) setType(dataType)
-				})
-			})
-		}
+		db.collection('users').onSnapshot((snapshot) => {
+			const data = snapshot.docs.map((doc) => ({
+				...doc.data(),
+				id: doc.id,
+			}))
+			console.log(data)
+		})
 	}, [])
 	useEffect(() => {
 		switch (type) {
@@ -34,6 +32,15 @@ function Landing() {
 		}
 	}, [type])
 	useEffect(() => {
+		const tagChannel = document.querySelectorAll('.channel-switch')
+		if (tagChannel) {
+			tagChannel?.forEach((item) => {
+				item.addEventListener('click', () => {
+					const dataType = item.getAttribute('data-type')
+					if (dataType) setType(dataType)
+				})
+			})
+		}
 		const listChannel = document.querySelectorAll('.channel-switch')
 		listChannel?.forEach((item) => {
 			item.addEventListener('click', () => {
