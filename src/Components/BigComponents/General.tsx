@@ -57,6 +57,12 @@ function General(props: General) {
 						<Chatcontent />
 						<Chatcontent isUser={true} />
 						<Chatcontent />
+						<div className="chat-form">
+							<form action="" className="form-chat">
+								<input type="text" className="input-chat" />
+								<button type='submit'> gửi </button>
+							</form>
+						</div>
 					</div>
 					<div className="nav-body-chat">
 						<p>Trực tuyến - 1</p>

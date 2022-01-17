@@ -1,15 +1,18 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
+import firebase, { auth } from '../firebase/firebase'
 import './Styles/Login.scss'
-
 function Login() {
 	const { t, i18n } = useTranslation()
-	const navigate = useNavigate()
-	const OnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const ggProvider = new firebase.auth.GoogleAuthProvider()
+	const OnSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		navigate({ pathname: '/home' }, { replace: true })
+
+		const data = await auth.signInWithPopup(ggProvider)
+		console.log(data)
 	}
+
 	return (
 		<div className="background">
 			<div className="login">
@@ -36,6 +39,7 @@ function Login() {
 						</div>
 					</form>
 				</div>
+
 				<div className="login-bottom">
 					<Link to={'/signup'}>
 						<div className="btn-signup sound">
