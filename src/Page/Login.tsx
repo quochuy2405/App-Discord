@@ -32,16 +32,16 @@ function Login() {
 				</div>
 				<div className="login-form">
 					<form onSubmit={OnSubmit}>
-						<div className="login-input">
+						{/* <div className="login-input">
 							<p className="text-input">Username</p>
 							<input type="text" required />
 						</div>
 						<div className="login-input">
 							<p className="text-input">Password</p>
 							<input type="password" required />
-						</div>
+						</div> */}
 						<button className="btn-login sound" type="submit">
-							<p>Login</p>
+							<p>Login width Google</p>
 						</button>
 						<div className="register-forgot">
 							<p className="register sound"> Register Account </p>
