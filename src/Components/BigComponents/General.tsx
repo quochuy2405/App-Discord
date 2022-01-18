@@ -98,6 +98,7 @@ function General(props: General) {
 								key={index}
 								username={item?.displayName}
 								Userid={item?.uid}
+								avata={item?.photoURL}
 								text={item?.text}
 							/>
 						))}
@@ -110,7 +111,7 @@ function General(props: General) {
 									placeholder="Nhắn tin"
 									className="input-chat"
 									id="chatSend"
-									onKeyPress={(e:any) => {
+									onKeyPress={(e: any) => {
 										if (e.charCode === 13) {
 											onSubmit(e)
 										}
