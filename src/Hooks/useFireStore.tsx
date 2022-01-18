@@ -1,25 +1,31 @@
-import React, { useEffect } from 'react'
-import firebase,{ db } from '../firebase/firebase'
+import React, { useEffect, useState } from 'react'
+import firebase, { db } from '../firebase/firebase'
 interface condition {
 	fieldName: string
-	operator: firebase.firestore.WhereFilterOp
-	value: string
+	operator: any
+	value: any
 }
 function useFireStore(collection: string, condition: condition) {
+	const [document, setDocument] = useState([{}])
 	useEffect(() => {
 		let collectionRef = db.collection(collection).orderBy('createdAt')
 		if (condition) {
-			collectionRef.where(condition.fieldName, condition.operator, condition.value)
+			if (!condition.value || !condition.value.length) {
+				return
+			}
+			collectionRef = collectionRef.where(condition.fieldName, condition.operator, condition.value)
 		}
-		// db.collection(collection).onSnapshot((snapshot) => {
-		// 	const data = snapshot.docs.map((doc) => ({
-		// 		...doc.data(),
-		// 		id: doc.id,
-		// 	}))
-		// 	console.log(data)
-		// })
-	}, [])
-	return <div></div>
+		const unsubcribe = collectionRef.onSnapshot((snapshot) => {
+			const document = snapshot.docs.map((doc) => ({
+				...doc.data(),
+				id: doc.id,
+			}))
+			if (document) setDocument(document)
+		})
+
+		return unsubcribe
+	}, [collection, condition])
+	return document
 }
 
 export default useFireStore

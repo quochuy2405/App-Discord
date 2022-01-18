@@ -4,17 +4,18 @@ import { auth } from '../firebase/firebase'
 interface Progress {
 	children: ReactNode
 }
+
 export const AuthContext = createContext({})
 function AuthProvider({ children }: Progress) {
 	const navigate = useNavigate()
-	const [user, setUser] = useState({})
+	const [user, setUser] = useState<any>({})
 	useEffect(() => {
 		const unsubscibed = auth.onAuthStateChanged((userAuth) => {
 			if (userAuth) {
 				const { displayName, email, uid, photoURL } = userAuth
 				setUser({ displayName, email, uid, photoURL })
 				navigate({ pathname: '/home' }, { replace: true })
-				return;
+				return
 			}
 			navigate({ pathname: '/' }, { replace: true })
 		})

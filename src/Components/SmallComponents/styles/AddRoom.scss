@@ -1,0 +1,23 @@
+.form-addRoom {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 20px;
+	width: 400px;
+	& input {
+		display: block;
+		width: 80%;
+		margin: 0 auto;
+		height: 40px;
+		border-radius: 5px;
+		padding: 5px 10px;
+		border: 2px solid orange;
+		&:focus {
+			border: none;
+			outline: 2px solid rgb(0, 110, 255);
+			transition: all linear 0.1s;
+			transform: scale(1.03);
+		}
+	}
+}

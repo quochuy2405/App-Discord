@@ -1,36 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react'
+import Tooltip from '@mui/material/Tooltip'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { AuthContext } from '../Auth/AuthProvider'
 import Channel from '../Components/BigComponents/Channel'
 import General from '../Components/BigComponents/General'
 import Home from '../Components/BigComponents/Home'
+import AddRoom from '../Components/SmallComponents/AddRoom'
 import { auth, db } from '../firebase/firebase'
+import useFireStore from '../Hooks/useFireStore'
 import './Styles/Landing.scss'
 function Landing() {
-	const [type, setType] = useState('0')
+	const [type, setType] = useState('-1')
 	const [appBody, setAppBody] = useState(<></>)
-	const { ...user } = useContext(AuthContext)
+	const [dataRoom, setDataRoom] = useState<any>()
+	const [openAddRoom, setOpenAddRoom] = useState<any>(false)
+	const { ...user } = useContext<any>(AuthContext)
+	const roomCondition = useMemo(
+		() => ({
+			fieldName: 'members',
+			operator: 'array-contains',
+			value: user?.uid,
+		}),
+		[user?.uid]
+	)
+	const rooms = useFireStore('rooms', roomCondition)
+	const setDataRooms = (data: any) => {
+		setDataRoom(data)
+	}
 	useEffect(() => {
 		db.collection('users').onSnapshot((snapshot) => {
 			const data = snapshot.docs.map((doc) => ({
 				...doc.data(),
 				id: doc.id,
 			}))
-			console.log(data)
+			// console.log(data)
 		})
 	}, [])
-	useEffect(() => {
-		switch (type) {
-			case '0': {
-				setAppBody(<Home />)
-				break
-			}
-
-			default: {
-				setAppBody(<General />)
-				break
-			}
-		}
-	}, [type])
 	useEffect(() => {
 		const tagChannel = document.querySelectorAll('.channel-switch')
 		if (tagChannel) {
@@ -62,7 +66,21 @@ function Landing() {
 				document.querySelector('.fa-volume-up')?.classList.add('show')
 			}
 		})
-	}, [])
+	}, [rooms])
+	useEffect(() => {
+		switch (type.toString()) {
+			case '-1': {
+				setAppBody(<Home />)
+				break
+			}
+
+			default: {
+				setAppBody(<General dataRoom={dataRoom} />)
+				break
+			}
+		}
+	}, [type, dataRoom?.id])
+
 	const HandleLogout = () => {
 		auth.signOut()
 	}
@@ -81,18 +99,30 @@ function Landing() {
 				</div>
 				<div className="nav-left">
 					<ul className="list-channel">
-						<li data-type="0" className="channel-switch sound active">
-							<Channel />
+						<li data-type="-1" className={`channel-switch sound active`}>
+							<Channel item={{ name: 'Trang chủ' }} />
 						</li>
-						<li data-type="1" className="channel-switch sound">
-							<Channel />
-						</li>
-						<li data-type="2" className="channel-switch sound">
-							<Channel />
-						</li>
-						<li data-type="3" className="channel-switch sound">
-							<Channel />
-						</li>
+						{rooms?.map(
+							(item: any, index) =>
+								item?.id && (
+									<li
+										key={index}
+										data-type={`${index}`}
+										onClick={() => setDataRooms(item)}
+										className={`channel-switch sound`}
+									>
+										<Channel item={item} />
+									</li>
+								)
+						)}
+						<li className={`channel-switch sound`}>
+							<div className="btn-addroom">
+								<Tooltip title="Thêm phòng" placement="right-start">
+									<i onClick={() => setOpenAddRoom(true)} className="far fa-plus-square"></i>
+								</Tooltip>
+							</div>
+						</li>{' '}
+						<AddRoom openAddRoom={openAddRoom} setOpenAddRoom={setOpenAddRoom} />
 					</ul>
 				</div>
 			</div>

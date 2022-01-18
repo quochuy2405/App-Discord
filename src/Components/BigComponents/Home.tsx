@@ -39,20 +39,6 @@ function Home(props: Home) {
 						<li className="tag-channel sound">#Kênh đánh bạc</li>
 					</ul>
 				</div>
-				<div className="body-switch">
-					<p className="title-channel sound">
-						<a data-toggle="collapse" href="#listhome1" aria-expanded="true">
-							Kênh học tập <i className="fad fa-chevron-right"></i>
-						</a>
-					</p>
-
-					<ul className="collapse listhometag show" id="listhome1">
-						<li className="tag-channel sound">#Kênh học tập</li>
-						<li className="tag-channel sound">#Kênh giải trí</li>
-						<li className="tag-channel sound">#Kênh tào lao</li>
-						<li className="tag-channel sound">#Kênh đánh bạc</li>
-					</ul>
-				</div>
 			</div>
 			<div className="body-home">
 				<div className="nav-body-home">
