@@ -41,7 +41,7 @@ function Login() {
 							<input type="password" required />
 						</div> */}
 						<button className="btn-login sound" type="submit">
-							<p>Login width Google</p>
+							<p>Login with Google</p>
 						</button>
 						<div className="register-forgot">
 							<p className="register sound"> Register Account </p>
