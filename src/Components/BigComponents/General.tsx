@@ -1,5 +1,5 @@
 import { TextareaAutosize } from '@mui/material'
-import React, { FormEvent, memo, useContext, useMemo, useState } from 'react'
+import React, { FormEvent, memo, useContext, useMemo, useState, useEffect, useRef } from 'react'
 import InviteMemember from '../SmallComponents/InviteMemeber'
 import Chatcontent from './../SmallComponents/Chatcontent'
 import UserTag from './../SmallComponents/UserTag'
@@ -16,6 +16,7 @@ function General(props: General) {
 	const { channelChat, dataRoom } = props
 	const [openInviteMemember, setOpenInviteMemember] = useState(false)
 	const { ...user } = useContext<any>(AuthContext)
+	useEffect(() => {}, [])
 	const onSubmit = (e: FormEvent) => {
 		e.preventDefault()
 		let chat = (document.getElementById('chatSend') as HTMLTextAreaElement).value
@@ -27,8 +28,7 @@ function General(props: General) {
 				roomId: dataRoom?.id,
 				displayName: user?.displayName,
 			})
-				;
-		(document.getElementById('chatSend') as HTMLTextAreaElement).value = ''
+		;(document.getElementById('chatSend') as HTMLTextAreaElement).value = ''
 	}
 	const messageCondition = React.useMemo(() => {
 		return {
@@ -46,8 +46,18 @@ function General(props: General) {
 	}, [dataRoom])
 	const messages = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
-	console.log(members);
-	
+	const messagesEndRef = useRef(null)
+
+	const scrollToBottom = () => {
+		var myDiv = document.querySelector<any>('.body-chat-render')
+		myDiv.scrollTop = myDiv.scrollHeight
+	}
+	useEffect(() => {
+		scrollToBottom()
+		return () => {
+			scrollToBottom()
+		}
+	}, [messages])
 	return (
 		<div className="general">
 			<div className="nav-general">
@@ -92,6 +102,7 @@ function General(props: General) {
 								text={item?.text}
 							/>
 						))}
+
 						<div className="chat-form chat-content">
 							<form className="form-chat" onSubmit={onSubmit}>
 								<TextareaAutosize
@@ -116,9 +127,16 @@ function General(props: General) {
 						</ul>
 						<p>Hên xui online =)) - {members.length || '0'}</p>
 						<ul>
-							{members?.map((item: any, index) => (
-								item.id&&<UserTag key={index} displayName={item?.displayName} photoURL={item?.photoURL} />
-							))}
+							{members?.map(
+								(item: any, index) =>
+									item.id && (
+										<UserTag
+											key={index}
+											displayName={item?.displayName}
+											photoURL={item?.photoURL}
+										/>
+									)
+							)}
 						</ul>
 					</div>
 				</div>

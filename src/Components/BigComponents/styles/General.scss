@@ -71,7 +71,8 @@
 			border: 1px solid white;
 			height: 35px !important;
 			padding: 5px !important;
-			background: linear-gradient(to right, rgb(253, 146, 47) 50%, rgba(255, 252, 252, 0.973) 0%) left;
+			background: linear-gradient(to right, rgb(253, 146, 47) 50%, rgba(255, 252, 252, 0.973) 0%)
+				left;
 			background-size: 200%;
 			transition: all 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 			line-height: 25px !important;
@@ -102,7 +103,7 @@
 
 			& .body-chat-render {
 				width: 100%;
-
+				scroll-behavior: smooth;
 				overflow: scroll;
 				flex: 6;
 				& p {
