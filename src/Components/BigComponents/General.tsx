@@ -46,7 +46,6 @@ function General(props: General) {
 	}, [dataRoom])
 	const messages = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
-	const messagesEndRef = useRef(null)
 
 	const scrollToBottom = () => {
 		var myDiv = document.querySelector<any>('.body-chat-render')
@@ -111,6 +110,11 @@ function General(props: General) {
 									placeholder="Nhắn tin"
 									className="input-chat"
 									id="chatSend"
+									onKeyPress={(e:any) => {
+										if (e.charCode === 13) {
+											onSubmit(e)
+										}
+									}}
 									name="chatContent"
 								/>
 								<button className="btn-submit" type="submit">
