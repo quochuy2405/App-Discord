@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles/UserTag.scss'
+import imgae from '../../Sound/user.jpg'
 interface User {
 	photoURL?: string
 	displayName?: string
@@ -7,16 +8,13 @@ interface User {
 }
 function UserTag(user: User) {
 	const { photoURL, displayName, status = 1 } = user
+	const handleEvent = (e: any) => {
+		e.target.src = imgae
+	}
 	return (
 		<div className="user-tag">
 			<div className="avata">
-				<img
-					src={
-						photoURL ||
-						'https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ'
-					}
-					alt=""
-				/>
+				<img onError={handleEvent} src={photoURL || imgae} alt="" />
 			</div>
 			<div className="name">
 				<p>{displayName}</p>

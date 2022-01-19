@@ -15,6 +15,7 @@ interface General {
 function General(props: General) {
 	const { channelChat, dataRoom } = props
 	const [openInviteMemember, setOpenInviteMemember] = useState(false)
+	const [flagUserInRoom, setflagUserInRoom] = useState(false)
 	const { ...user } = useContext<any>(AuthContext)
 	useEffect(() => {}, [])
 	const onSubmit = (e: FormEvent) => {
@@ -43,7 +44,7 @@ function General(props: General) {
 			operator: 'in',
 			value: dataRoom?.members,
 		}
-	}, [dataRoom])
+	}, [dataRoom?.members,flagUserInRoom])
 	const messages = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
 
@@ -65,6 +66,8 @@ function General(props: General) {
 					setOpenInviteMemember={setOpenInviteMemember}
 					roomId={dataRoom?.id}
 					member={dataRoom?.members}
+					setflagUserInRoom={setflagUserInRoom}
+					flagUserInRoom={flagUserInRoom}
 				/>
 				<div className="general-channel-name">
 					<p>{dataRoom?.name}</p>

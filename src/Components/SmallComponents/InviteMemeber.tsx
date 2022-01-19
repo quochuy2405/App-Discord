@@ -13,9 +13,18 @@ interface InviteMemember {
 	setOpenInviteMemember: any
 	roomId: string
 	member: Array<string>
+	flagUserInRoom?: boolean
+	setflagUserInRoom?: any
 }
 export default function InviteMemember(props: InviteMemember) {
-	const { openInviteMemember, setOpenInviteMemember, roomId, member } = props
+	const {
+		openInviteMemember,
+		setOpenInviteMemember,
+		roomId,
+		member,
+		flagUserInRoom,
+		setflagUserInRoom,
+	} = props
 	const [data, setData] = React.useState<any>()
 
 	const snack = useSnackbar()
@@ -43,6 +52,7 @@ export default function InviteMemember(props: InviteMemember) {
 					})
 					.then((res) => {
 						snack.enqueueSnackbar('Thêm thành công', { variant: 'success', autoHideDuration: 2000 })
+						setflagUserInRoom(!flagUserInRoom)
 					})
 					.catch(() => {
 						snack.enqueueSnackbar('Email chưa đăng ký', {
