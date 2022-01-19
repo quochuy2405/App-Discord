@@ -34,35 +34,17 @@ function Chatcontent(props: chatContent) {
 		<div className={`chat-content ${Userid === user?.uid && 'isUser'}`}>
 			{messages[index - 1]?.uid !== Userid && (
 				<div className={`user ${Userid === user?.uid && 'isUser'}`}>
-					{Userid === user?.uid ? (
-						<>
-							<div className="username">
-								<p>{username}</p>
-							</div>
-							<img
-								className="avata"
-								src={
-									avata ||
-									'https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ'
-								}
-								alt=""
-							/>
-						</>
-					) : (
-						<>
-							<img
-								className="avata"
-								src={
-									avata ||
-									'https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ'
-								}
-								alt=""
-							/>
-							<div className="username">
-								<p>{username}</p>
-							</div>
-						</>
-					)}
+					<div className="username">
+						<p>{username}</p>
+					</div>
+					<img
+						className="avata"
+						src={
+							avata ||
+							'https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ'
+						}
+						alt=""
+					/>
 				</div>
 			)}
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
