@@ -35,6 +35,9 @@
 	.App .background .login {
 		width: 80%;
 	}
+	 .form-addRoom {
+		width: 100%;
+	}
 
 	.background .login .head-login .description,
 	.App .general .nav-general,
