@@ -138,14 +138,14 @@
 					}
 				}
 				& .form-chat {
-						padding: 10px;
+						padding: 0 10px;
 						justify-content: space-around;
 						display: flex;
 						position: sticky;
 						align-items: center;
 						gap: 20px;
 						height: 100%;
-						width: 90%;
+						width: 95%;
 					& .btn-submit {
 						@include button-custome(10%, 40px, rgb(233, 57, 57), white, 1rem, 10px);
 						min-width: 50px;
