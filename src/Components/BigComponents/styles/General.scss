@@ -142,9 +142,10 @@
 					align-items: center;
 					gap: 20px;
 					height: 100%;
-					width: 100%;
+					width: 90%;
 					& .btn-submit {
-						@include button-custome(80px, 40px, rgb(233, 57, 57), white, 1rem, 10px);
+						@include button-custome(10%, 40px, rgb(233, 57, 57), white, 1rem, 10px);
+						min-width: 50px;
 					}
 				}
 			}

@@ -49,8 +49,7 @@ function General(props: General) {
 
 	const scrollToBottom = () => {
 		var myDiv = document.querySelector<any>('.body-chat-render')
-		if(myDiv)
-		myDiv.scrollTop = myDiv.scrollHeight
+		if (myDiv) myDiv.scrollTop = myDiv.scrollHeight
 	}
 	useEffect(() => {
 		scrollToBottom()
@@ -120,8 +119,7 @@ function General(props: General) {
 									name="chatContent"
 								/>
 								<button className="btn-submit" type="submit">
-									{' '}
-									Send{' '}
+									<i className="fad fa-paper-plane"></i>
 								</button>
 							</form>
 						</div>
