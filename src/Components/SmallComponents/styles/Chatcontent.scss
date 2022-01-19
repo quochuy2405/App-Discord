@@ -6,8 +6,8 @@
 		background-color: rgba(43, 43, 43, 0.342);
 		cursor: pointer;
 	}
-	& .time{
-		margin: -10px 36px 0 36px;
+	& .time {
+		margin: -10px 0 0 0;
 		font-size: 0.7rem !important;
 	}
 	& .user {
@@ -31,11 +31,11 @@
 		}
 	}
 	& .content {
-		padding: 5px 20px;
+		padding: 5px 55px;
 
 		& p.text.context-text {
 			font-weight: 400;
-			padding: 0 20px;
+
 			overflow-wrap: break-word;
 		}
 	}
