@@ -16,7 +16,7 @@ interface General {
 function General(props: General) {
 	const { channelChat, dataRoom } = props
 	const [openInviteMemember, setOpenInviteMemember] = useState(false)
-	const [noticeCheck, setNoticeCheck] = useState(false)
+	const [noticeCheck, setNoticeCheck] = useState(0)
 	const [flagUserInRoom, setflagUserInRoom] = useState(false)
 	const appContext = useContext(ctx)
 	const { ...user } = useContext<any>(AuthContext)
@@ -50,21 +50,22 @@ function General(props: General) {
 	}, [dataRoom?.members, flagUserInRoom])
 	const messages: any = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
+	const checkNew = useRef(0)
 	useEffect(() => {
 		try {
-			if (messages[messages.length - 1]?.uid !== user?.uid && noticeCheck) {
-				console.log(messages[messages.length - 1]?.uid, user?.uid)
+			if (messages[messages.length - 1]?.uid !== user?.uid && checkNew.current < messages.length) {
 				appContext.messageSound()
 			}
+			checkNew.current = messages.length
 		} catch (error) {}
-	}, [messages.length])
+	}, [messages.length, dataRoom?.id])
 	const scrollToBottom = () => {
 		var myDiv = document.querySelector<any>('.body-chat-render')
 		if (myDiv) myDiv.scrollTop = myDiv.scrollHeight
 	}
 	useEffect(() => {
 		scrollToBottom()
-		setNoticeCheck(true)
+
 		return () => {
 			scrollToBottom()
 		}
