@@ -5,15 +5,21 @@
 	overflow: hidden;
 	& .header {
 		z-index: 0;
+		& .nav-top-icon {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			height: 25px;
+			& .icon-top-2 {
+				display: flex;
+			}
+		}
 		& .logout {
-			position: absolute;
-			top: 0;
-			right: 5%;
 			width: fit-content;
 			height: 22px;
 			white-space: nowrap;
 			padding: 2px 5px;
-			margin-top: 1px;
+			margin: auto 0;
 			border: 2px solid white;
 			line-height: 15px;
 			color: white;
@@ -33,14 +39,18 @@
 			}
 		}
 		& .audio-mouse {
-			position: absolute;
-			top: 3px;
-			right: 20px;
+			text-align: right;
+			padding: 0 20px;
+			width: fit-content;
 			& .fad {
 				display: none;
 			}
 			& .fad.show {
 				display: block;
+			}
+			& i {
+				height: 25px;
+				line-height: 25px;
 			}
 		}
 		& .nav-top {

@@ -4,7 +4,7 @@
 	height: 100%;
 	display: flex;
 	& .nav-general {
-		min-width: 260px;
+		flex: 1;
 		height: 100%;
 		background-color: rgb(91, 107, 121);
 		border-radius: 10px 0 0 0;
@@ -22,6 +22,7 @@
 		}
 		& .body-switch {
 			padding: 5px 15px;
+			width: 100%;
 			& .listGeneraltag {
 				padding: 1px;
 				& li {
@@ -34,6 +35,7 @@
 					border-radius: 5px;
 					color: white;
 					font-weight: 550;
+					white-space: nowrap;
 					&:hover {
 						background-position: left;
 						color: black;
@@ -59,7 +61,7 @@
 	}
 
 	& .body-general {
-		width: 100%;
+		flex: 4;
 		height: 100vh;
 		& .btn-addmembes {
 			position: absolute;

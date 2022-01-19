@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router'
 import Signup from './Page/SignUp'
 import Landing from './Page/Landing'
 import { ctx } from './Context/contextFE'
+import './Responsive.css'
 
 function App() {
 	const appContext = useContext(ctx)
@@ -24,7 +25,6 @@ function App() {
 				<Routes>
 					<Route path="/home" element={<Landing />} />
 					<Route path="/" element={<Login />} />
-					<Route path="/signup" element={<Signup />} />
 				</Routes>
 			</div>
 		</Suspense>

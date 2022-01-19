@@ -10,7 +10,7 @@ interface chatContent {
 }
 
 function Chatcontent(props: chatContent) {
-	const { username, avata, text, date_time = new Date(Date.now()), Userid } = props
+	const { username, avata, text, date_time, Userid } = props
 	const { ...user } = useContext<any>(AuthContext)
 
 	return (
@@ -19,9 +19,7 @@ function Chatcontent(props: chatContent) {
 				{Userid === user?.uid ? (
 					<>
 						<div className="date-time">
-							<p className="time">{`${date_time.getDate()}/${
-								date_time.getMonth() + 1
-							}/${date_time.getFullYear()}`}</p>
+							<p className="time">Today - </p>
 						</div>
 						<div className="username">
 							<p>{username}</p>
@@ -49,9 +47,7 @@ function Chatcontent(props: chatContent) {
 							<p>{username}</p>
 						</div>
 						<div className="date-time">
-							<p className="time">{`${date_time.getDate()}/${
-								date_time.getMonth() + 1
-							}/${date_time.getFullYear()}`}</p>
+							<p className="time">- Today</p>
 						</div>
 					</>
 				)}

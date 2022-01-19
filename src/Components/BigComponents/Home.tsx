@@ -57,6 +57,9 @@ function Home(props: Home) {
 						</li>
 					</ul>
 				</div>
+				<div className="body-content">
+					<p>Bản thử nghiệm - Vui lòng tạo phòng</p>
+				</div>
 			</div>
 		</div>
 	)

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import firebase, { auth, db } from '../firebase/firebase'
 import { addDocument } from '../firebase/service'
+import logo from '../Sound/logo.png'
 import './Styles/Login.scss'
 function Login() {
 	const { t, i18n } = useTranslation()
@@ -32,33 +33,17 @@ function Login() {
 				</div>
 				<div className="login-form">
 					<form onSubmit={OnSubmit}>
-						{/* <div className="login-input">
-							<p className="text-input">Username</p>
-							<input type="text" required />
-						</div>
-						<div className="login-input">
-							<p className="text-input">Password</p>
-							<input type="password" required />
-						</div> */}
-						<button className="btn-login sound" type="submit">
-							<p>Login with Google</p>
+						<button className="login-now sound" type="submit">
+							<div className="img">
+								<img src={logo} alt="" />
+							</div>
 						</button>
-						<div className="register-forgot">
-							<p className="register sound"> Register Account </p>
-							<p className="forgot sound"> Forgot Account? </p>
-						</div>
 					</form>
 				</div>
 
 				<div className="login-bottom">
-					<Link to={'/signup'}>
-						<div className="btn-signup sound">
-							<i className="fab fa-google"></i> Sign up with Google
-						</div>
-					</Link>
-
 					<p className="text-rule">
-						Click by login you agree to our <strong>Terms of service</strong> and{' '}
+						Click by button you agree to our <strong>Terms of service</strong> and{' '}
 						<strong>Private policy</strong>
 					</p>
 				</div>

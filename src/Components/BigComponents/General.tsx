@@ -49,6 +49,7 @@ function General(props: General) {
 
 	const scrollToBottom = () => {
 		var myDiv = document.querySelector<any>('.body-chat-render')
+		if(myDiv)
 		myDiv.scrollTop = myDiv.scrollHeight
 	}
 	useEffect(() => {

@@ -27,6 +27,18 @@ function Landing() {
 		setDataRoom(data)
 	}
 	useEffect(() => {
+			const audio = document.querySelector('.audio-mouse')
+			audio?.addEventListener('click', () => {
+				const up = document.querySelector('.fad.fa-volume-up.show')
+				if (up) {
+					console.log(up.className)
+					document.querySelector('.fad.fa-volume-slash')?.classList.add('show')
+					document.querySelector('.fad.fa-volume-up')?.classList.remove('show')
+				} else {
+					document.querySelector('.fad.fa-volume-slash')?.classList.remove('show')
+					document.querySelector('.fad.fa-volume-up')?.classList.add('show')
+				}
+			})
 		db.collection('users').onSnapshot((snapshot) => {
 			const data = snapshot.docs.map((doc) => ({
 				...doc.data(),
@@ -55,17 +67,7 @@ function Landing() {
 				}
 			})
 		})
-		const audio = document.querySelector('.audio-mouse')
-		audio?.addEventListener('click', () => {
-			const up = document.querySelector('.fa-volume-up.show')
-			if (up) {
-				document.querySelector('.fa-volume-up')?.classList.remove('show')
-				document.querySelector('.fa-volume-slash')?.classList.add('show')
-			} else {
-				document.querySelector('.fa-volume-slash')?.classList.remove('show')
-				document.querySelector('.fa-volume-up')?.classList.add('show')
-			}
-		})
+	
 	}, [rooms])
 	useEffect(() => {
 		switch (type.toString()) {
@@ -87,16 +89,21 @@ function Landing() {
 	return (
 		<div className="layouts">
 			<div className="header">
-				<div className="logout" onClick={HandleLogout}>
-					<p>log out</p>
+				<div className="nav-top-icon">
+					<div className="nav-top">
+						<p className="app-name">Rysass</p>
+					</div>
+					<div className="icon-top-2">
+						<div className="logout" onClick={HandleLogout}>
+							<p>log out</p>
+						</div>
+						<div className="audio-mouse sound">
+							<i className="fad fa-volume-up show"></i>
+							<i className="fad fa-volume-slash"></i>
+						</div>
+					</div>
 				</div>
-				<div className="audio-mouse sound">
-					<i className="fad fa-volume-up show"></i>
-					<i className="fad fa-volume-slash"></i>
-				</div>
-				<div className="nav-top">
-					<p className="app-name">Rysass</p>
-				</div>
+
 				<div className="nav-left">
 					<ul className="list-channel">
 						<li data-type="-1" className={`channel-switch sound active`}>
