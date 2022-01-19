@@ -100,6 +100,7 @@ function General(props: General) {
 								Userid={item?.uid}
 								avata={item?.photoURL}
 								text={item?.text}
+								date_time={item?.createdAt?.seconds}
 							/>
 						))}
 

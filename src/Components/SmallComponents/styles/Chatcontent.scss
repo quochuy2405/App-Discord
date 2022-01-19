@@ -6,6 +6,10 @@
 		background-color: rgba(43, 43, 43, 0.342);
 		cursor: pointer;
 	}
+	& .time{
+		margin: -10px 30px 0 30px;
+		font-size: 0.7rem !important;
+	}
 	& .user {
 		display: flex;
 		width: 100%;

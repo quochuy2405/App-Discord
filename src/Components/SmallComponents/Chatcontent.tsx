@@ -1,14 +1,22 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../Auth/AuthProvider'
+import { formatRelative } from 'date-fns'
 import './styles/Chatcontent.scss'
 interface chatContent {
 	username?: string
 	avata?: string
 	text?: string
-	date_time?: Date
+	date_time?: number
 	Userid?: string
 }
-
+const timestamp = (seconds: number) => {
+	let formatDate = ''
+	if (seconds) {
+		formatDate = formatRelative(new Date(seconds * 1000), new Date())
+		formatDate = formatDate.charAt(0).toUpperCase() + formatDate.slice(1)
+	}
+	return formatDate
+}
 function Chatcontent(props: chatContent) {
 	const { username, avata, text, date_time, Userid } = props
 	const { ...user } = useContext<any>(AuthContext)
@@ -18,9 +26,7 @@ function Chatcontent(props: chatContent) {
 			<div className={`user ${Userid === user?.uid && 'isUser'}`}>
 				{Userid === user?.uid ? (
 					<>
-						<div className="date-time">
-							<p className="time">Today - </p>
-						</div>
+						<div className="date-time"></div>
 						<div className="username">
 							<p>{username}</p>
 						</div>
@@ -46,14 +52,12 @@ function Chatcontent(props: chatContent) {
 						<div className="username">
 							<p>{username}</p>
 						</div>
-						<div className="date-time">
-							<p className="time">- Today</p>
-						</div>
 					</>
 				)}
 			</div>
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
-				<p className="text context-text">{ text }</p>
+				<p className="time">{date_time && timestamp(date_time)}</p>
+				<p className="text context-text">{text}</p>
 			</div>
 		</div>
 	)
