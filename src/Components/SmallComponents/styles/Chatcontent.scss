@@ -10,7 +10,6 @@
 	position: relative;
 
 	& .time {
-		margin: -10px 0 0 0;
 		font-size: 0.65rem !important;
 	}
 	& .user {
@@ -30,7 +29,7 @@
 		}
 	}
 	& .content {
-		padding: 5px 55px;
+		padding-left: 55px;
 
 		& p.text.context-text {
 			font-weight: 400;
@@ -68,3 +67,7 @@
 		right: 0;
 	}
 }
+.content.isUser {
+		padding-left: 0;
+		padding-right: 55px;
+	}
