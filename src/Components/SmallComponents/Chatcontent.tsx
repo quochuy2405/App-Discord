@@ -37,14 +37,14 @@ function Chatcontent(props: chatContent) {
 				</div>
 			)}
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
-				<p className="time">{timestamp(date_time)}</p>
 				<p className="text context-text">{text}</p>
+				<p className="time">{timestamp(date_time)}</p>
 			</div>
 		</div>
 	)
 	return (
 		<Box>
-			<Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 1000 } : {})}>
+			<Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 500 } : {})}>
 				{icon}
 			</Grow>
 		</Box>
