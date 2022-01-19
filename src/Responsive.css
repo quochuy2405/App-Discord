@@ -36,7 +36,7 @@
 		width: 80%;
 	}
 
-	.App .background .login .head-login,
+	.background .login .head-login .description,
 	.App .general .nav-general,
 	.home .nav-home {
 		display: none;
