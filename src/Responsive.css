@@ -18,7 +18,7 @@
 }
 @media screen and (max-width: 1045px) and (min-width: 600px) {
 	.App .general .body-general .body-chat {
-		width: calc( 100vw - 290px);
+		width: calc(100vw - 290px);
 	}
 }
 @media screen and (max-width: 320px) {
@@ -35,6 +35,8 @@
 	.App .background .login {
 		width: 80%;
 	}
+
+	.App .background .login .head-login,
 	.App .general .nav-general,
 	.home .nav-home {
 		display: none;
