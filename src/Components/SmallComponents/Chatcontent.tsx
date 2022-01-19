@@ -53,7 +53,7 @@ function Chatcontent(props: chatContent) {
 				)}
 			</div>
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
-				<p className="text context-text">{text}</p>
+				<p className="text context-text">{ text }</p>
 			</div>
 		</div>
 	)

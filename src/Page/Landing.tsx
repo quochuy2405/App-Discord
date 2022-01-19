@@ -27,18 +27,18 @@ function Landing() {
 		setDataRoom(data)
 	}
 	useEffect(() => {
-			const audio = document.querySelector('.audio-mouse')
-			audio?.addEventListener('click', () => {
-				const up = document.querySelector('.fad.fa-volume-up.show')
-				if (up) {
-					console.log(up.className)
-					document.querySelector('.fad.fa-volume-slash')?.classList.add('show')
-					document.querySelector('.fad.fa-volume-up')?.classList.remove('show')
-				} else {
-					document.querySelector('.fad.fa-volume-slash')?.classList.remove('show')
-					document.querySelector('.fad.fa-volume-up')?.classList.add('show')
-				}
-			})
+		const audio = document.querySelector('.audio-mouse')
+		audio?.addEventListener('click', () => {
+			const up = document.querySelector('.fad.fa-volume-up.show')
+			if (up) {
+				console.log(up.className)
+				document.querySelector('.fad.fa-volume-slash')?.classList.add('show')
+				document.querySelector('.fad.fa-volume-up')?.classList.remove('show')
+			} else {
+				document.querySelector('.fad.fa-volume-slash')?.classList.remove('show')
+				document.querySelector('.fad.fa-volume-up')?.classList.add('show')
+			}
+		})
 		db.collection('users').onSnapshot((snapshot) => {
 			const data = snapshot.docs.map((doc) => ({
 				...doc.data(),
@@ -67,7 +67,6 @@ function Landing() {
 				}
 			})
 		})
-	
 	}, [rooms])
 	useEffect(() => {
 		switch (type.toString()) {
@@ -95,7 +94,9 @@ function Landing() {
 					</div>
 					<div className="icon-top-2">
 						<div className="logout" onClick={HandleLogout}>
-							<p>log out</p>
+							<p>
+								<i className="fad fa-sign-out-alt"></i>
+							</p>
 						</div>
 						<div className="audio-mouse sound">
 							<i className="fad fa-volume-up show"></i>

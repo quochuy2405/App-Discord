@@ -25,15 +25,6 @@
 		width: calc(100vw - 60px);
 		height: calc(100vh - 25px);
 	}
-	.App .home .body-home .nav-body-home .nav-home--tag {
-		padding-left: 5px;
- 
-		height: 65px;
-	}
-	.App .home .body-home .nav-body-home {
-		height: 65px;
-		border-radius: 10px 0 0 0;
-	}
 }
 @media screen and (max-width: 600px) {
 	.App .background .login {
@@ -47,6 +38,15 @@
 		width: 50%;
 	}
 	.App .general .body-general .nav-body-general {
+		border-radius: 10px 0 0 0;
+	}
+	.App .home .body-home .nav-body-home .nav-home--tag {
+		padding-left: 5px;
+
+		height: 65px;
+	}
+	.App .home .body-home .nav-body-home {
+		height: 65px;
 		border-radius: 10px 0 0 0;
 	}
 }

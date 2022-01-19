@@ -111,6 +111,7 @@ function General(props: General) {
 									placeholder="Nhắn tin"
 									className="input-chat"
 									id="chatSend"
+									style={{ whiteSpace: 'pre-line' }}
 									onKeyPress={(e: any) => {
 										if (e.charCode === 13) {
 											onSubmit(e)
