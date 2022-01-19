@@ -2,6 +2,7 @@ import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogTitle from '@mui/material/DialogTitle'
+import { useSnackbar } from 'notistack'
 import * as React from 'react'
 import { AuthContext } from '../../Auth/AuthProvider'
 import { db } from '../../firebase/firebase'
@@ -16,6 +17,8 @@ interface InviteMemember {
 export default function InviteMemember(props: InviteMemember) {
 	const { openInviteMemember, setOpenInviteMemember, roomId, member } = props
 	const [data, setData] = React.useState<any>()
+
+	const snack = useSnackbar()
 	const userCondition = React.useMemo(() => {
 		return {
 			fieldName: 'email',
@@ -28,14 +31,30 @@ export default function InviteMemember(props: InviteMemember) {
 	}
 	const userInvite: any = useFireStore('users', userCondition)
 	React.useEffect(() => {
-		if (userInvite[0].uid) {
-			const { uid } = userInvite[0]
-			console.log(uid)
-			const roomRef = db.collection('rooms').doc(roomId)
-			member.push(uid)
-			console.log(member)
-			roomRef.update({
-				members: member,
+		try {
+			if (userInvite[0].uid) {
+				const { uid } = userInvite[0]
+				console.log(uid)
+				const roomRef = db.collection('rooms').doc(roomId)
+				member.push(uid)
+				roomRef
+					.update({
+						members: member,
+					})
+					.then((res) => {
+						snack.enqueueSnackbar('Thêm thành công', { variant: 'success', autoHideDuration: 2000 })
+					})
+					.catch(() => {
+						snack.enqueueSnackbar('Email chưa đăng ký', {
+							variant: 'error',
+							autoHideDuration: 2000,
+						})
+					})
+			}
+		} catch (error) {
+			snack.enqueueSnackbar('Email chưa đăng ký', {
+				variant: 'error',
+				autoHideDuration: 2000,
 			})
 		}
 	}, [userInvite])
