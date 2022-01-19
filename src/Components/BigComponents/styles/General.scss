@@ -112,7 +112,7 @@
 				padding-top: 20px;
 				& p {
 					font-size: 1rem;
-					color: white;
+					color: rgb(41, 41, 41);
 					font-weight: 500;
 				}
 			}
@@ -138,13 +138,14 @@
 					}
 				}
 				& .form-chat {
-					padding: 10px;
-					justify-content: space-around;
-					display: flex;
-					align-items: center;
-					gap: 20px;
-					height: 100%;
-					width: 90%;
+						padding: 10px;
+						justify-content: space-around;
+						display: flex;
+						position: sticky;
+						align-items: center;
+						gap: 20px;
+						height: 100%;
+						width: 90%;
 					& .btn-submit {
 						@include button-custome(10%, 40px, rgb(233, 57, 57), white, 1rem, 10px);
 						min-width: 50px;
@@ -153,10 +154,16 @@
 			}
 			& .nav-body-chat {
 				flex: 2;
+				width: 100%;
 				background-color: rgb(91, 107, 121);
 				padding: 20px;
 				overflow: scroll;
 				& p {
+					width: 150px;
+					white-space: nowrap;
+					max-width: 100%;
+					overflow: hidden;
+					text-overflow: ellipsis;
 					font-size: 1rem;
 					color: white;
 					font-weight: 500;

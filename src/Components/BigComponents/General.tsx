@@ -67,7 +67,7 @@ function General(props: General) {
 					member={dataRoom?.members}
 				/>
 				<div className="general-channel-name">
-					<p>Động lười</p>
+					<p>{dataRoom?.name}</p>
 				</div>
 				<div className="body-switch">
 					<p className="title-channel sound">
@@ -95,6 +95,8 @@ function General(props: General) {
 					<div className="body-chat-render">
 						{messages?.map((item: any, index) => (
 							<Chatcontent
+								messages={messages}
+								index={index}
 								key={index}
 								username={item?.displayName}
 								Userid={item?.uid}
@@ -104,7 +106,7 @@ function General(props: General) {
 							/>
 						))}
 
-						<div className="chat-form chat-content">
+						<div className="chat-form ">
 							<form className="form-chat" onSubmit={onSubmit}>
 								<TextareaAutosize
 									maxRows={4}
@@ -131,7 +133,7 @@ function General(props: General) {
 						<ul>
 							<UserTag displayName={user?.displayName} photoURL={user?.photoURL} />
 						</ul>
-						<p>Hên xui online =)) - {members.length || '0'}</p>
+						<p> Mọi người - {members.length || '0'}</p>
 						<ul>
 							{members?.map(
 								(item: any, index) =>

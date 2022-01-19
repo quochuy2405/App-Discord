@@ -1,14 +1,16 @@
 .chat-content {
-	width: 100%;
+	transition: all ease 0.3s;
+	width: fit-content;
 	height: fit-content;
-	padding: 5px;
-	&:hover {
-		background-color: rgba(43, 43, 43, 0.342);
-		cursor: pointer;
-	}
+	border-radius: 0 25px  25px 25px;
+	margin: 20px;
+	background-color: rgba(255, 255, 255, 0.938);
+	padding: 10px;
+	position: relative;
+
 	& .time {
 		margin: -10px 0 0 0;
-		font-size: 0.7rem !important;
+		font-size: 0.65rem !important;
 	}
 	& .user {
 		display: flex;
@@ -25,10 +27,6 @@
 			display: block;
 			border-radius: 50%;
 		}
-		& .date-time > p.time {
-			font-weight: 200;
-			font-size: 0.9rem;
-		}
 	}
 	& .content {
 		padding: 5px 55px;
@@ -41,8 +39,32 @@
 	}
 	& .isUser {
 		justify-content: right;
+
 		& p {
 			text-align: right;
 		}
+	}
+	&::after {
+		content: '';
+		border-width: 10px;
+		border-color: transparent transparent transparent rgba(255, 255, 255, 0.938);;
+		border-style: solid;
+		position: absolute;
+		top: -5px;
+		left: 0;
+	}
+}
+.chat-content.isUser {
+	margin-left: auto;
+	transition: width linear 0.6s;
+	border-radius: 25px 0 25px 25px;
+	&::after {
+		content: '';
+		border-width: 10px;
+		border-color: transparent rgba(255, 255, 255, 0.938) transparent transparent;
+		border-style: solid;
+		position: absolute;
+		top: -5px;
+		right: 0;
 	}
 }
