@@ -7,6 +7,7 @@ import './styles/General.scss'
 import { addDocument } from './../../firebase/service'
 import { AuthContext } from './../../Auth/AuthProvider'
 import useFireStore from './../../Hooks/useFireStore'
+import { ctx } from '../../Context/contextFE'
 
 interface General {
 	channelChat?: Array<string>
@@ -15,7 +16,9 @@ interface General {
 function General(props: General) {
 	const { channelChat, dataRoom } = props
 	const [openInviteMemember, setOpenInviteMemember] = useState(false)
+	const [noticeCheck, setNoticeCheck] = useState(false)
 	const [flagUserInRoom, setflagUserInRoom] = useState(false)
+	const appContext = useContext(ctx)
 	const { ...user } = useContext<any>(AuthContext)
 	useEffect(() => {}, [])
 	const onSubmit = (e: FormEvent) => {
@@ -44,20 +47,28 @@ function General(props: General) {
 			operator: 'in',
 			value: dataRoom?.members,
 		}
-	}, [dataRoom?.members,flagUserInRoom])
-	const messages = useFireStore('messages', messageCondition)
+	}, [dataRoom?.members, flagUserInRoom])
+	const messages: any = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
-
+	useEffect(() => {
+		try {
+			if (messages[messages.length - 1]?.uid !== user?.uid && noticeCheck) {
+				console.log(messages[messages.length - 1]?.uid, user?.uid)
+				appContext.messageSound()
+			}
+		} catch (error) {}
+	}, [messages.length])
 	const scrollToBottom = () => {
 		var myDiv = document.querySelector<any>('.body-chat-render')
 		if (myDiv) myDiv.scrollTop = myDiv.scrollHeight
 	}
 	useEffect(() => {
 		scrollToBottom()
+		setNoticeCheck(true)
 		return () => {
 			scrollToBottom()
 		}
-	}, [messages])
+	}, [messages.length])
 	return (
 		<div className="general">
 			<div className="nav-general">
@@ -96,7 +107,7 @@ function General(props: General) {
 				</div>
 				<div className="body-chat">
 					<div className="body-chat-render">
-						{messages?.map((item: any, index) => (
+						{messages?.map((item: any, index: any) => (
 							<Chatcontent
 								messages={messages}
 								index={index}
