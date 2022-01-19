@@ -16,6 +16,11 @@
 		width: 60%;
 	}
 }
+@media screen and (max-width: 1045px) and (min-width: 600px) {
+	.App .general .body-general .body-chat {
+		width: calc( 100vw - 290px);
+	}
+}
 @media screen and (max-width: 320px) {
 	.App .layouts .header .nav-left {
 		width: 60px;
