@@ -79,15 +79,15 @@ function General(props: General) {
 					<ul className="collapse listGeneraltag show" id="listGeneral">
 						<li className="tag-channel sound">#Kênh học tập</li>
 						<li className="tag-channel sound">#Kênh giải trí</li>
-						<li className="tag-channel sound">#Kênh tào lao</li>
-						<li className="tag-channel sound">#Kênh đánh bạc</li>
+						<li className="tag-channel sound">#Kênh tán chuyện</li>
+						<li className="tag-channel sound">#Kênh làm việc</li>
 					</ul>
 				</div>
 			</div>
 			<div className="body-general">
 				<div className="nav-body-general">
 					<p>#Chung</p>
-					<p className="btn-addmembes" onClick={() => setOpenInviteMemember(true)}>
+					<p className="btn-addmembes sound" onClick={() => setOpenInviteMemember(true)}>
 						Thêm bạn bè
 					</p>
 				</div>
@@ -122,7 +122,7 @@ function General(props: General) {
 									}}
 									name="chatContent"
 								/>
-								<button className="btn-submit" type="submit">
+								<button className="btn-submit sound" type="submit">
 									<i className="fad fa-paper-plane"></i>
 								</button>
 							</form>

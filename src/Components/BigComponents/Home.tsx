@@ -35,8 +35,8 @@ function Home(props: Home) {
 					<ul className="collapse listhometag show" id="listhome">
 						<li className="tag-channel sound">#Kênh học tập</li>
 						<li className="tag-channel sound">#Kênh giải trí</li>
-						<li className="tag-channel sound">#Kênh tào lao</li>
-						<li className="tag-channel sound">#Kênh đánh bạc</li>
+						<li className="tag-channel sound">#Kênh tán chuyện</li>
+						<li className="tag-channel sound">#Kênh làm việc</li>
 					</ul>
 				</div>
 			</div>

@@ -93,7 +93,7 @@ function Landing() {
 						<p className="app-name">Rysass</p>
 					</div>
 					<div className="icon-top-2">
-						<div className="logout" onClick={HandleLogout}>
+						<div className="logout sound" onClick={HandleLogout}>
 							<p>
 								<i className="fad fa-sign-out-alt"></i>
 							</p>
