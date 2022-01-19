@@ -1,20 +1,16 @@
 import React from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import './styles/channel.scss'
+import useImage from '../../Sound/icon.png'
 interface ChannelProps {
-	isActive?: string
 	item?: any
 }
 function Channel(props: ChannelProps) {
-	const { isActive, item } = props
+	const {  item } = props
 	return (
 		<div className="channel">
 			<Tooltip title={`${item?.name || 'Chưa có tên'}`} placement="right-start">
-				<img
-					className="channel-img"
-					src="https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ"
-					alt=""
-				/>
+				<img className="channel-img" src={item.photoURL || useImage} alt="" />
 			</Tooltip>
 		</div>
 	)

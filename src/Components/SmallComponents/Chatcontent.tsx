@@ -1,13 +1,9 @@
-import React, { useContext } from 'react'
-import { Theme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
-import Switch from '@mui/material/Switch'
-import Paper from '@mui/material/Paper'
 import Grow from '@mui/material/Grow'
-import FormControlLabel from '@mui/material/FormControlLabel'
-
-import { AuthContext } from '../../Auth/AuthProvider'
 import { formatRelative } from 'date-fns'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../Auth/AuthProvider'
+import useImage from '../../Sound/user.jpg'
 import './styles/Chatcontent.scss'
 interface chatContent {
 	username?: string
@@ -37,14 +33,7 @@ function Chatcontent(props: chatContent) {
 					<div className="username">
 						<p>{username}</p>
 					</div>
-					<img
-						className="avata"
-						src={
-							avata ||
-							'https://play-lh.googleusercontent.com/0oO5sAneb9lJP6l8c6DH4aj6f85qNpplQVHmPmbbBxAukDnlO7DarDW0b-kEIHa8SQ'
-						}
-						alt=""
-					/>
+					<img className="avata" src={avata || useImage} alt="" />
 				</div>
 			)}
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
