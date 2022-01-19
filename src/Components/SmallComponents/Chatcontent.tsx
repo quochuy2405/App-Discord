@@ -29,12 +29,25 @@ function Chatcontent(props: chatContent) {
 	const icon = (
 		<div className={`chat-content ${Userid === user?.uid && 'isUser'}`}>
 			{messages[index - 1]?.uid !== Userid && (
-				<div className={`user ${Userid === user?.uid && 'isUser'}`}>
-					<div className="username">
-						<p>{username}</p>
-					</div>
-					<img className="avata" src={avata || useImage} alt="" />
-				</div>
+				<>
+					{Userid === user?.uid ? (
+						<div className={`user ${Userid === user?.uid && 'isUser'}`}>
+							<div className="username">
+								<p>{username}</p>
+							</div>
+							<img className="avata" src={avata || useImage} alt="" />
+						</div>
+					) : (
+						<>
+							<div className={`user ${Userid === user?.uid && 'isUser'}`}>
+								<img className="avata" src={avata || useImage} alt="" />
+								<div className="username">
+									<p>{username}</p>
+								</div>
+							</div>
+						</>
+					)}
+				</>
 			)}
 			<div className={`content ${Userid === user?.uid && 'isUser'}`}>
 				<p className="text context-text">{text}</p>
@@ -44,7 +57,7 @@ function Chatcontent(props: chatContent) {
 	)
 	return (
 		<Box>
-			<Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 500 } : {})}>
+			<Grow in={true} style={{ transformOrigin: '0 0 0' }} {...(true ? { timeout: 200 } : {})}>
 				{icon}
 			</Grow>
 		</Box>
