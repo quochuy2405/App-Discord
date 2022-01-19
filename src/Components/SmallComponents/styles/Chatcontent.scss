@@ -29,8 +29,7 @@
 		}
 	}
 	& .content {
-		padding-left: 55px;
-		padding-right: 5px;
+		padding: 8px 13px;
 
 		& p.text.context-text {
 			font-weight: 400;
@@ -68,7 +67,3 @@
 		right: 0;
 	}
 }
-.content.isUser {
-		padding-left: 5px;
-		padding-right: 55px;
-	}
