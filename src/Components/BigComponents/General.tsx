@@ -16,23 +16,22 @@ interface General {
 function General(props: General) {
 	const { channelChat, dataRoom } = props
 	const [openInviteMemember, setOpenInviteMemember] = useState(false)
-	const [noticeCheck, setNoticeCheck] = useState(0)
+	const [messageValue, setMessageValue] = useState<any>()
 	const [flagUserInRoom, setflagUserInRoom] = useState(false)
 	const appContext = useContext(ctx)
 	const { ...user } = useContext<any>(AuthContext)
 	useEffect(() => {}, [])
 	const onSubmit = (e: FormEvent) => {
 		e.preventDefault()
-		let chat = (document.getElementById('chatSend') as HTMLTextAreaElement).value
-		if (chat)
+
+		if (messageValue)
 			addDocument('messages', {
-				text: chat,
+				text: messageValue,
 				uid: user?.uid,
 				photoURL: user?.photoURL,
 				roomId: dataRoom?.id,
 				displayName: user?.displayName,
 			})
-		;(document.getElementById('chatSend') as HTMLTextAreaElement).value = ''
 	}
 	const messageCondition = React.useMemo(() => {
 		return {
@@ -74,6 +73,9 @@ function General(props: General) {
 			scrollToBottom()
 		}
 	}, [messages.length])
+	const onChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setMessageValue(e.target.value)
+	}
 	return (
 		<div className="general">
 			<div className="nav-general">
@@ -137,13 +139,14 @@ function General(props: General) {
 							<form className="form-chat" onSubmit={onSubmit}>
 								<TextareaAutosize
 									maxRows={4}
+									onChange={(e) => onChangeMessage(e)}
 									aria-label="empty textarea"
 									placeholder="Nhắn tin"
 									className="input-chat"
 									id="chatSend"
 									style={{ whiteSpace: 'pre-line' }}
 									onKeyPress={(e: any) => {
-										if (e.charCode === 13) {
+										if (e.charCode === 13 && !e.shiftKey) {
 											onSubmit(e)
 										}
 									}}

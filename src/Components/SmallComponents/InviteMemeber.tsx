@@ -26,7 +26,7 @@ export default function InviteMemember(props: InviteMemember) {
 		setflagUserInRoom,
 	} = props
 	const [data, setData] = React.useState<any>()
-
+	const { ...user } = React.useContext<any>(AuthContext)
 	const snack = useSnackbar()
 	const userCondition = React.useMemo(() => {
 		return {
@@ -41,9 +41,13 @@ export default function InviteMemember(props: InviteMemember) {
 	const userInvite: any = useFireStore('users', userCondition)
 	React.useEffect(() => {
 		try {
-			if (userInvite[0].uid) {
+			if (user?.uid === userInvite[0]?.uid && userInvite[0]?.uid && data) {
+				snack.enqueueSnackbar('Ơ sao lại thêm chính mình vậy ?', {
+					variant: 'warning',
+					autoHideDuration: 3000,
+				})
+			} else if (userInvite[0].uid) {
 				const { uid } = userInvite[0]
-				console.log(uid)
 				const roomRef = db.collection('rooms').doc(roomId)
 				member.push(uid)
 				roomRef
@@ -51,20 +55,23 @@ export default function InviteMemember(props: InviteMemember) {
 						members: member,
 					})
 					.then((res) => {
-						snack.enqueueSnackbar('Thêm thành công', { variant: 'success', autoHideDuration: 2000 })
+						snack.enqueueSnackbar('Thêm thành công', {
+							variant: 'success',
+							autoHideDuration: 2000,
+						})
 						setflagUserInRoom(!flagUserInRoom)
 					})
 					.catch(() => {
 						snack.enqueueSnackbar('Email chưa đăng ký', {
 							variant: 'error',
-							autoHideDuration: 2000,
+							autoHideDuration: 3000,
 						})
 					})
 			}
 		} catch (error) {
 			snack.enqueueSnackbar('Email chưa đăng ký', {
 				variant: 'error',
-				autoHideDuration: 2000,
+				autoHideDuration: 3000,
 			})
 		}
 	}, [userInvite])
@@ -72,7 +79,6 @@ export default function InviteMemember(props: InviteMemember) {
 		e.preventDefault()
 		let email = (document.getElementById('email') as HTMLInputElement).value
 		setData(email)
-
 		setOpenInviteMemember(false)
 	}
 
