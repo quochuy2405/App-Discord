@@ -24,7 +24,7 @@ function General(props: General) {
 	const onSubmit = (e: FormEvent) => {
 		e.preventDefault()
 
-		if (messageValue)
+		if (messageValue) {
 			addDocument('messages', {
 				text: messageValue,
 				uid: user?.uid,
@@ -32,6 +32,8 @@ function General(props: General) {
 				roomId: dataRoom?.id,
 				displayName: user?.displayName,
 			})
+			setMessageValue('')
+		}
 	}
 	const messageCondition = React.useMemo(() => {
 		return {
@@ -142,6 +144,7 @@ function General(props: General) {
 									onChange={(e) => onChangeMessage(e)}
 									aria-label="empty textarea"
 									placeholder="Nhắn tin"
+									value={messageValue}
 									className="input-chat"
 									id="chatSend"
 									style={{ whiteSpace: 'pre-line' }}
