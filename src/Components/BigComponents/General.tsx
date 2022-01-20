@@ -50,10 +50,14 @@ function General(props: General) {
 	}, [dataRoom?.members, flagUserInRoom])
 	const messages: any = useFireStore('messages', messageCondition)
 	const members = useFireStore('users', membersCondition)
-	const checkNew = useRef(0)
+	let checkNew = useRef(0)
 	useEffect(() => {
 		try {
-			if (messages[messages.length - 1]?.uid !== user?.uid && checkNew.current < messages.length) {
+			if (
+				messages[messages.length - 1]?.uid !== user?.uid &&
+				checkNew.current < messages.length &&
+				messages[0]?.uid
+			) {
 				appContext.messageSound()
 			}
 			checkNew.current = messages.length
@@ -102,24 +106,32 @@ function General(props: General) {
 			<div className="body-general">
 				<div className="nav-body-general">
 					<p>#Chung</p>
-					<p className="btn-addmembes sound" onClick={() => setOpenInviteMemember(true)}>
-						Thêm bạn bè
-					</p>
+					<div className="nav-body-right">
+						<p className="icon-videocall">
+							<i className="fas fa-video"></i>
+						</p>
+						<p className="btn-addmembes sound" onClick={() => setOpenInviteMemember(true)}>
+							Thêm bạn bè
+						</p>
+					</div>
 				</div>
 				<div className="body-chat">
 					<div className="body-chat-render">
-						{messages?.map((item: any, index: any) => (
-							<Chatcontent
-								messages={messages}
-								index={index}
-								key={index}
-								username={item?.displayName}
-								Userid={item?.uid}
-								avata={item?.photoURL}
-								text={item?.text}
-								date_time={item?.createdAt?.seconds}
-							/>
-						))}
+						{messages?.map(
+							(item: any, index: any) =>
+								item?.uid && (
+									<Chatcontent
+										messages={messages}
+										index={index}
+										key={index}
+										username={item?.displayName}
+										Userid={item?.uid}
+										avata={item?.photoURL}
+										text={item?.text}
+										date_time={item?.createdAt?.seconds}
+									/>
+								)
+						)}
 
 						<div className="chat-form ">
 							<form className="form-chat" onSubmit={onSubmit}>
